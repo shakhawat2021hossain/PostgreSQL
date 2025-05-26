@@ -10,10 +10,26 @@ PostgreSQL হলো একটি Relational Database Management System(RDBMS)�
 - **Primary Key:**
 - এটি এমন একটি কলাম বা কলামের সমন্বয় যা প্রতিটি সারিকে (row) ইউনিকভাবে চিহ্নিত করে। এক টেবিলে একটি মাত্র প্রাইমারি কী থাকে এবং এটি কখনো NULL হতে পারে না।
 - Primary Key ২ টি কলামের সমন্বয় হলে সেটাকে Composite primary key বলে।
+- Example:
+```sql
+CREATE TABLE departments (
+    department_id SERIAL PRIMARY KEY,
+    department_name VARCHAR(50) NOT NULL
+);
+```
 
 - **Foreign Key:**
 - এটি এমন একটি কলাম যা অন্য টেবিলের primary key এর সাথে সংযুক্ত থাকে। এটি দুইটি টেবিলের মধ্যে সম্পর্ক তৈরি করে।
-
+- Foreign Key অন্য একটি টেবিলের Primary Key 
+- Example:
+```sql
+CREATE TABLE employees (
+    employee_id SERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    department_id INT REFERENCES departments(department_id)
+);
+```
+  
 ---
 
 ### 4. What is the difference between the VARCHAR and CHAR data types?
